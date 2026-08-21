@@ -37,7 +37,6 @@ a{color:inherit;text-decoration:none}
 .cyan{color:var(--cyan)}
 #webgl{position:fixed;inset:0;z-index:-4;pointer-events:none;overflow:hidden}#webgl canvas{display:block;width:100%;height:100%}
 
-/* ===== Constellation background framing ===== */
 .constellation-overlay{
   position:fixed;inset:0;z-index:-3;pointer-events:none;
   background:
@@ -148,8 +147,9 @@ nav{
 .intro-grid{display:grid;grid-template-columns:1fr .8fr;gap:60px;align-items:end}
 .section-title{font-size:clamp(42px,7.5vw,110px);line-height:.86;letter-spacing:-.075em;font-weight:800}
 
-/* ===== V4 kinetic headings ===== */
+/* Title letters animation */
 .title-word{display:inline-block;transform-style:preserve-3d;will-change:transform,opacity,filter}
+.title-letter{display:inline-block;opacity:0;transform:translateY(80px) rotateX(40deg);}
 .section-copy{max-width:460px;color:#85909e;font-size:13px;line-height:1.9}
 .horizontal{overflow:hidden;cursor:grab}
 .horizontal:active{cursor:grabbing}
@@ -200,8 +200,6 @@ nav{
 .links a:hover{color:var(--cyan);border-color:var(--cyan)}
 footer{padding:25px 0 30px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:15px;color:#5e6875;font:9px "DM Mono";letter-spacing:.07em;text-transform:uppercase}
 
-
-/* ===== V4: premium 3D project cards ===== */
 .project-scene{
   width:min(900px,78vw);min-height:620px;border-radius:30px;
   background:
@@ -252,7 +250,6 @@ footer{padding:25px 0 30px;border-top:1px solid var(--line);display:flex;justify
 .s2{animation-delay:.3s}.s3{animation-delay:.7s}.s4{animation-delay:1.05s}
 @keyframes v4Signal{0%,100%{transform:scale(.45);opacity:.3}50%{transform:scale(1.65);opacity:1}}
 
-/* ===== V4: bigger, genuinely random toolbox ===== */
 .constellation{height:680px;perspective:1500px;transform-style:preserve-3d}
 .constellation:before{width:250px;height:250px;box-shadow:0 0 115px rgba(121,251,255,.09),inset 0 0 70px rgba(121,251,255,.04)}
 .constellation:after{width:5px;height:5px;box-shadow:0 0 48px 17px rgba(121,251,255,.17)}
@@ -339,8 +336,8 @@ footer{padding:25px 0 30px;border-top:1px solid var(--line);display:flex;justify
   <a href="#home" class="logo">MEDO<i>.</i></a>
   <ul class="navlinks">
     <li><a href="#home">Index</a></li>
-    <li><a href="#projects">Experiments</a></li>
-    <li><a href="#skills">Stack</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
     <li><a href="#contact">Connect</a></li>
   </ul>
   <div class="navright"><span class="live"></span> System / Online</div>
@@ -351,8 +348,8 @@ footer{padding:25px 0 30px;border-top:1px solid var(--line);display:flex;justify
 
 <div class="mobile-menu" id="mobileMenu">
   <a href="#home">Index</a>
-  <a href="#projects">Experiments</a>
-  <a href="#skills">Stack</a>
+  <a href="#projects">Projects</a>
+  <a href="#skills">Skills</a>
   <a href="#contact">Connect</a>
   <span class="mono">System / Online</span>
 </div>
@@ -365,17 +362,17 @@ footer{padding:25px 0 30px;border-top:1px solid var(--line);display:flex;justify
       <h1 class="hero-title">
         <span class="word"><span class="name-line" id="firstName">Mohamed</span></span>
         <span class="word"><span class="name-line" id="lastName">Salah.</span></span>
-        <span class="name-sub" id="nameSub">I build machines that think.</span>
+        <span class="name-sub" id="nameSub">IoT Engineer & Systems Builder.</span>
       </h1>
-      <p class="hero-copy" id="heroCopy">IoT & Embedded Systems Engineer focused on smart hardware, connected products and AI-assisted systems. Fourth-year Computer Science student at Menoufia University.</p>
+      <p class="hero-copy" id="heroCopy">IoT & Embedded Systems Engineer specializing in smart hardware, connected products, and AI-assisted systems. Fourth-year Computer Science & Artificial Intelligence student at Menoufia University, with hands-on experience in ESP32, Arduino, sensors, and full-stack IoT development.</p>
       <div class="hero-actions" id="heroActions">
-        <a href="#projects" class="button primary magnetic">Enter the lab <span>↘</span></a>
-        <a href="#contact" class="button magnetic">Open channel</a>
+        <a href="#projects" class="button primary magnetic">Explore Projects <span>↘</span></a>
+        <a href="https://www.youtube.com/@ElectronicsloverMedoelzehary" target="_blank" class="button magnetic">Open Channel</a>
       </div>
       <div class="hero-metric" id="heroMetric">
-        <div class="metric"><strong>03</strong><span>Selected builds</span></div>
-        <div class="metric"><strong>ESP</strong><span>Embedded core</span></div>
-        <div class="metric"><strong>AI</strong><span>Intelligence layer</span></div>
+        <div class="metric"><strong>04</strong><span>Projects Built</span></div>
+        <div class="metric"><strong>ESP</strong><span>Embedded Core</span></div>
+        <div class="metric"><strong>AI</strong><span>Intelligence Layer</span></div>
       </div>
     </div>
 
@@ -400,10 +397,12 @@ footer{padding:25px 0 30px;border-top:1px solid var(--line);display:flex;justify
   <div class="projects-intro">
     <div class="container intro-grid">
       <div>
-        <div class="overline mono">01 / Selected experiments</div>
-        <h2 class="section-title"><span class="title-word p1">Projects</span><br><span class="title-word p2">in motion.</span></h2>
+        <div class="overline mono">01 / Featured Work</div>
+        <h2 class="section-title" id="projectsTitle">
+          <span class="title-word" id="projectWord1">PROJECTS</span>
+        </h2>
       </div>
-      <p class="section-copy">Drag the cards left & right, or scroll. Each build becomes a small world with its own visual system.</p>
+      <p class="section-copy">Each project represents a complete system — from hardware integration and embedded logic to AI-powered intelligence and real-time dashboards.</p>
     </div>
   </div>
 
@@ -419,7 +418,7 @@ footer{padding:25px 0 30px;border-top:1px solid var(--line);display:flex;justify
         </div>
         <div class="project-scene-content">
           <h3>Smart<br>Event Hall.</h3>
-          <p>Connected access, environmental sensing and AI prediction in one real-time system.</p>
+          <p>Guest registration with QR codes, automated access control, environmental monitoring, and AI-based prediction for future events. Integrated with a live web dashboard.</p>
           <div class="project-tags"><span>ESP32</span><span>QR ACCESS</span><span>AI PREDICTION</span><span>WEB DASHBOARD</span></div>
           <a class="project-link magnetic" href="#contact">Explore build →</a>
         </div>
@@ -435,7 +434,7 @@ footer{padding:25px 0 30px;border-top:1px solid var(--line);display:flex;justify
         </div>
         <div class="project-scene-content">
           <h3>Smart<br>Greenhouse.</h3>
-          <p>Computer vision and automated irrigation driven by sensor data and distributed microcontrollers.</p>
+          <p>Plant monitoring using ESP32-CAM image comparison, automated irrigation and cooling via ESP8266, soil moisture sensing, and a full monitoring dashboard.</p>
           <div class="project-tags"><span>ESP32-CAM</span><span>ESP8266</span><span>VISION</span><span>AUTOMATION</span></div>
           <a class="project-link magnetic" href="#contact">Explore build →</a>
         </div>
@@ -451,8 +450,24 @@ footer{padding:25px 0 30px;border-top:1px solid var(--line);display:flex;justify
         </div>
         <div class="project-scene-content">
           <h3>Smart<br>Trash Bin.</h3>
-          <p>A compact embedded system that senses, actuates and communicates status in real time.</p>
+          <p>Embedded waste management prototype with fill-level monitoring, automatic lid opening, and real-time LCD status updates — a complete sensing and actuation system.</p>
           <div class="project-tags"><span>ARDUINO</span><span>ULTRASONIC</span><span>ACTUATORS</span><span>LCD</span></div>
+          <a class="project-link magnetic" href="#contact">Explore build →</a>
+        </div>
+      </article>
+
+      <article class="project-scene">
+        <span class="project-mini">AI PREDICTION / 004</span>
+        <span class="project-number">04</span>
+        <div class="scene-graphic">
+          <div class="tech-ring r-a"></div><div class="tech-ring r-b"></div><div class="tech-ring r-c"></div>
+          <div class="tech-core"></div>
+          <i class="signal s1"></i><i class="signal s2"></i><i class="signal s3"></i><i class="signal s4"></i>
+        </div>
+        <div class="project-scene-content">
+          <h3>Player<br>Performance AI.</h3>
+          <p>Predictive system built in Python that analyzes player performance over 10 matches, evaluates current condition, and forecasts performance for upcoming games.</p>
+          <div class="project-tags"><span>PYTHON</span><span>AI</span><span>DATA ANALYSIS</span><span>PREDICTIVE MODELING</span></div>
           <a class="project-link magnetic" href="#contact">Explore build →</a>
         </div>
       </article>
@@ -463,10 +478,12 @@ footer{padding:25px 0 30px;border-top:1px solid var(--line);display:flex;justify
 <section id="skills" class="skills-section">
   <div class="container skill-layout">
     <div class="skill-copy">
-      <div class="overline mono">02 / Technical constellation</div>
-      <h2 class="section-title"><span class="title-word t1">The</span><br><span class="title-word t2">toolbox.</span></h2>
-      <p>Instead of stacking technologies in static boxes, the stack becomes a living system. Hover a node and the network reacts.</p>
-      <div class="skill-command"><b></b> Hover the nodes / wake the system</div>
+      <div class="overline mono">02 / Technical Arsenal</div>
+      <h2 class="section-title" id="skillsTitle">
+        <span class="title-word" id="skillWord1">SKILLS</span>
+      </h2>
+      <p>My technical stack spans embedded systems, IoT hardware, AI, and full-stack development. Each skill connects to form a cohesive system for building intelligent, real-world solutions.</p>
+      <div class="skill-command"><b></b> Hover the nodes to explore</div>
     </div>
 
     <div class="constellation" id="constellation">
@@ -480,6 +497,7 @@ footer{padding:25px 0 30px;border-top:1px solid var(--line);display:flex;justify
       <span class="skill-node" data-group="ai" style="left:7%;bottom:25%">PREDICTIVE MODELING</span>
       <span class="skill-node" data-group="hardware" style="left:18%;top:50%">SENSORS</span>
       <span class="skill-node" data-group="hardware" style="left:43%;top:43%">ACTUATORS</span>
+      <span class="skill-node" data-group="hardware" style="right:5%;bottom:45%">HARDWARE TROUBLESHOOTING</span>
       <svg id="linksSvg" viewBox="0 0 1000 640" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none">
         <g fill="none" stroke="rgba(121,251,255,.13)" stroke-width="1"></g>
       </svg>
@@ -489,14 +507,18 @@ footer{padding:25px 0 30px;border-top:1px solid var(--line);display:flex;justify
 
 <section id="contact" class="contact">
   <div class="container">
-    <div class="overline mono">03 / Open channel</div>
-    <h2 class="section-title"><span class="title-word c1">Let's build</span><br><span class="cyan title-word c2">something alive.</span></h2>
-    <p>Open for internships, collaborations and difficult hardware problems. Bring the challenge.</p>
+    <div class="overline mono">03 / Open Channel</div>
+    <h2 class="section-title" id="contactTitle">
+      <span class="title-word" id="contactWord1">LET'S BUILD</span>
+      <br>
+      <span class="cyan title-word" id="contactWord2">SOMETHING ALIVE.</span>
+    </h2>
+    <p>Open for internships, collaborations, and challenging hardware problems. Bring the challenge — I'll bring the solution.</p>
     <div class="links">
       <a class="magnetic" href="mailto:msmso1645@gmail.com">EMAIL</a>
       <a class="magnetic" href="https://linkedin.com/in/electronics-lover-medo-elzehary-2228242b" target="_blank" rel="noopener">LINKEDIN</a>
       <a class="magnetic" href="https://github.com/mosalah34" target="_blank" rel="noopener">GITHUB</a>
-      <a class="magnetic" href="tel:+201029149379">CALL</a>
+      <a class="magnetic" href="https://www.youtube.com/@ElectronicsloverMedoelzehary" target="_blank" rel="noopener">YOUTUBE</a>
     </div>
   </div>
 </section>
@@ -546,7 +568,65 @@ function splitText(id){
 splitText('firstName');
 splitText('lastName');
 
-/* ===== Hero entrance (image first + fast) ===== */
+/* ===== Split title into letters ===== */
+function splitTitleLetters(elementId, className = 'title-letter') {
+  const el = document.getElementById(elementId);
+  if (!el) return;
+  const text = el.textContent.trim();
+  el.textContent = '';
+  [...text].forEach(char => {
+    const span = document.createElement('span');
+    span.className = className;
+    span.textContent = char === ' ' ? '\u00a0' : char;
+    el.appendChild(span);
+  });
+}
+
+function animateLetters(elementId, delay = 0.03, stagger = 0.04, duration = 1.2) {
+  const el = document.getElementById(elementId);
+  if (!el || prefersReduced) return;
+  const letters = el.querySelectorAll('.title-letter');
+  if (!letters.length) return;
+  gsap.fromTo(letters,
+    {
+      opacity: 0,
+      y: 80,
+      rotationX: 45,
+      scale: 0.8,
+      filter: 'blur(8px)'
+    },
+    {
+      opacity: 1,
+      y: 0,
+      rotationX: 0,
+      scale: 1,
+      filter: 'blur(0px)',
+      duration: duration,
+      ease: 'power3.out',
+      stagger: stagger,
+      delay: delay,
+      scrollTrigger: {
+        trigger: el.closest('.section-title') || el.parentElement,
+        start: 'top 82%',
+        once: true
+      }
+    }
+  );
+}
+
+/* ===== Animate all section titles ===== */
+splitTitleLetters('projectWord1');
+animateLetters('projectWord1', 0.2, 0.06, 1.0);
+
+splitTitleLetters('skillWord1');
+animateLetters('skillWord1', 0.2, 0.06, 1.0);
+
+splitTitleLetters('contactWord1');
+splitTitleLetters('contactWord2');
+animateLetters('contactWord1', 0.2, 0.06, 1.0);
+animateLetters('contactWord2', 0.5, 0.06, 1.0);
+
+/* ===== Hero entrance ===== */
 const tl = gsap.timeline({defaults:{ease:'power3.out'}});
 tl.from('#heroObject', {scale:0.75, opacity:0, duration:1.0}, 0)
   .from('#heroKicker', {y:25, opacity:0, duration:0.6}, 0.15)
@@ -558,9 +638,8 @@ tl.from('#heroObject', {scale:0.75, opacity:0, duration:1.0}, 0)
   .from('#heroMetric', {y:16, opacity:0, duration:0.5}, 0.85)
   .from(['#f1','#f2','#f3'], {y:14, opacity:0, stagger:0.08, duration:0.45}, 0.5);
 
-/* ===== Continuous motion for EVERYTHING ===== */
+/* ===== Continuous motion ===== */
 if(!prefersReduced){
-  // Name floating
   gsap.to('#firstName .name-char', {
     y: (i) => Math.sin(i * 0.7) * 3,
     duration: 2.6, ease:'sine.inOut', stagger:0.06, yoyo:true, repeat:-1, delay:1.2
@@ -569,26 +648,41 @@ if(!prefersReduced){
     y: (i) => Math.cos(i * 0.7) * 3,
     duration: 2.9, ease:'sine.inOut', stagger:0.07, yoyo:true, repeat:-1, delay:1.3
   });
-
-  // Subtitle + copy + metrics + labels
   gsap.to('#nameSub', {y:4, duration:3.2, ease:'sine.inOut', yoyo:true, repeat:-1, delay:1.5});
   gsap.to('#heroCopy', {y:3, duration:3.8, ease:'sine.inOut', yoyo:true, repeat:-1, delay:1.7});
   gsap.to('#heroMetric .metric', {y:5, duration:3.5, ease:'sine.inOut', stagger:0.2, yoyo:true, repeat:-1, delay:1.8});
   gsap.to(['#f1','#f2','#f3'], {y:6, duration:2.8, ease:'sine.inOut', stagger:0.25, yoyo:true, repeat:-1, delay:1.4});
   gsap.to('#heroKicker', {x:3, duration:4, ease:'sine.inOut', yoyo:true, repeat:-1, delay:1.6});
+
+  // Floating animation for title letters
+  gsap.to('#projectWord1 .title-letter', {
+    y: (i) => Math.sin(i * 0.5) * 3,
+    duration: 3.2, ease:'sine.inOut', stagger:0.03, yoyo:true, repeat:-1, delay:2
+  });
+  gsap.to('#skillWord1 .title-letter', {
+    y: (i) => Math.cos(i * 0.5) * 3,
+    duration: 3.2, ease:'sine.inOut', stagger:0.03, yoyo:true, repeat:-1, delay:2.2
+  });
+  gsap.to('#contactWord1 .title-letter', {
+    y: (i) => Math.sin(i * 0.5 + 0.5) * 3,
+    duration: 3.0, ease:'sine.inOut', stagger:0.03, yoyo:true, repeat:-1, delay:2.4
+  });
+  gsap.to('#contactWord2 .title-letter', {
+    y: (i) => Math.cos(i * 0.5 + 0.5) * 3,
+    duration: 3.4, ease:'sine.inOut', stagger:0.03, yoyo:true, repeat:-1, delay:2.6
+  });
 }
 
-/* ===== Horizontal projects - FIXED scroll + drag ===== */
+/* ===== Horizontal projects ===== */
 const track = document.getElementById('projectTrack');
 
 function getMaxX(){
   return Math.max(0, track.scrollWidth - window.innerWidth + 60);
 }
 
-let st; // ScrollTrigger instance
+let st;
 
 if(window.innerWidth > 900){
-  // Create the scroll-driven animation
   const tween = gsap.to(track, {
     x: () => -getMaxX(),
     ease: 'none',
@@ -597,31 +691,24 @@ if(window.innerWidth > 900){
       start: 'top top',
       end: () => '+=' + getMaxX(),
       pin: true,
-      scrub: 1.2,
+      scrub: 1.0,
       invalidateOnRefresh: true,
       anticipatePin: 1
     }
   });
   st = tween.scrollTrigger;
 
-  // Drag that properly syncs with ScrollTrigger
   Draggable.create(track, {
     type: 'x',
-    
     bounds: {
       minX: () => -getMaxX(),
       maxX: 0
     },
     edgeResistance: 0.9,
     onPress() {
-      // temporarily kill the link so drag feels free
       if(st) st.disable(false);
     },
-    onDrag() {
-      // while dragging we control x directly
-    },
     onDragEnd() {
-      // after drag, set the page scroll so ScrollTrigger matches current position
       if(st){
         const progress = gsap.utils.clamp(0, 1, -this.x / getMaxX());
         const targetScroll = st.start + progress * (st.end - st.start);
@@ -639,10 +726,8 @@ if(window.innerWidth > 900){
     }
   });
 } else {
-  // Mobile: simple free drag
   Draggable.create(track, {
     type: 'x',
-    
     bounds: {
       minX: () => -getMaxX(),
       maxX: 0
@@ -651,10 +736,10 @@ if(window.innerWidth > 900){
   });
 }
 
-/* ===== V4 toolbox: random motion, not a loop ===== */
-const constellation=document.getElementById('constellation');
-const nodes=[...constellation.querySelectorAll('.skill-node')];
-const svgG=document.getElementById('linksSvg').querySelector('g');
+/* ===== Constellation ===== */
+const constellation = document.getElementById('constellation');
+const nodes = [...constellation.querySelectorAll('.skill-node')];
+const svgG = document.getElementById('linksSvg').querySelector('g');
 
 function drawLinks(){
   svgG.innerHTML='';
@@ -704,54 +789,6 @@ nodes.forEach((node,i)=>{
   });
 });
 
-/* ===== V4 different heading animations ===== */
-function animateHeading(selector,type){
-  const el=document.querySelector(selector);
-  if(!el || prefersReduced)return;
-  const words=el.querySelectorAll('.title-word');
-
-  if(type==='project'){
-    gsap.fromTo(words[0],
-      {x:-100,z:-200,rotationY:-38,opacity:0},
-      {x:0,z:0,rotationY:0,opacity:1,duration:1.15,ease:'expo.out',scrollTrigger:{trigger:el,start:'top 87%',once:true}}
-    );
-    gsap.fromTo(words[1],
-      {x:110,y:-35,z:150,rotationY:34,opacity:0},
-      {x:0,y:0,z:0,rotationY:0,opacity:1,duration:1.15,ease:'back.out(1.5)',scrollTrigger:{trigger:el,start:'top 84%',once:true}}
-    );
-    gsap.to(words[0],{y:-4,rotationZ:-.6,duration:3.7,ease:'sine.inOut',repeat:-1,yoyo:true});
-    gsap.to(words[1],{y:4,rotationZ:.5,duration:4.1,ease:'sine.inOut',repeat:-1,yoyo:true});
-  }
-
-  if(type==='tools'){
-    gsap.fromTo(words[0],
-      {scale:.15,rotationZ:-55,rotationX:70,z:-240,opacity:0},
-      {scale:1,rotationZ:0,rotationX:0,z:0,opacity:1,duration:1.25,ease:'elastic.out(1,.55)',scrollTrigger:{trigger:el,start:'top 87%',once:true}}
-    );
-    gsap.fromTo(words[1],
-      {letterSpacing:'.32em',y:100,rotationX:-90,opacity:0},
-      {letterSpacing:'normal',y:0,rotationX:0,opacity:1,duration:1.1,ease:'power4.out',scrollTrigger:{trigger:el,start:'top 84%',once:true}}
-    );
-    gsap.to(words[0],{x:5,rotationY:6,duration:4.4,ease:'sine.inOut',repeat:-1,yoyo:true});
-    gsap.to(words[1],{x:-5,rotationY:-5,duration:3.8,ease:'sine.inOut',repeat:-1,yoyo:true});
-  }
-
-  if(type==='contact'){
-    gsap.fromTo(words[0],
-      {y:80,skewX:-13,opacity:0},
-      {y:0,skewX:0,opacity:1,duration:1.15,ease:'power4.out',scrollTrigger:{trigger:el,start:'top 88%',once:true}}
-    );
-    gsap.fromTo(words[1],
-      {scale:1.5,rotationY:55,z:-190,opacity:0,filter:'blur(12px)'},
-      {scale:1,rotationY:0,z:0,opacity:1,filter:'blur(0px)',duration:1.2,ease:'expo.out',scrollTrigger:{trigger:el,start:'top 84%',once:true}}
-    );
-    gsap.to(words[1],{y:-8,rotationX:4,textShadow:'0 0 30px rgba(121,251,255,.15)',duration:2.9,ease:'sine.inOut',repeat:-1,yoyo:true});
-  }
-}
-animateHeading('.projects-intro .section-title','project');
-animateHeading('.skill-copy .section-title','tools');
-animateHeading('.contact .section-title','contact');
-
 /* ===== Hero tilt ===== */
 const heroObj = document.getElementById('heroObject');
 if(!isMobile()){
@@ -762,7 +799,7 @@ if(!isMobile()){
   });
 }
 
-/* ===== V4 project card 3D physics ===== */
+/* ===== Project card 3D physics ===== */
 if(!isMobile() && !prefersReduced){
   document.querySelectorAll('.project-scene').forEach((card,i)=>{
     const rx=gsap.quickTo(card,'rotationX',{duration:.45,ease:'power3.out'});
@@ -816,7 +853,7 @@ if(!isMobile()){
   })();
 }
 
-/* ===== V6: reference-style connected constellation ===== */
+/* ===== Three.js Constellation Background ===== */
 (function initConstellationBackground(){
   const host=document.getElementById('webgl');
 
@@ -840,7 +877,6 @@ if(!isMobile()){
     renderer.outputEncoding=THREE.sRGBEncoding;
     host.appendChild(renderer.domElement);
 
-    /* -------------------- NODES -------------------- */
     const NODE_COUNT=145;
     const nodes=[];
 
@@ -877,7 +913,6 @@ if(!isMobile()){
       nodes.push(node);
     }
 
-    /* -------------------- CONNECTIONS -------------------- */
     const MAX_SEGMENTS=NODE_COUNT*12;
     const positions=new Float32Array(MAX_SEGMENTS*6);
     const geometry=new THREE.BufferGeometry();
@@ -907,7 +942,6 @@ if(!isMobile()){
           const dz=a.position.z-b.position.z;
           const d=Math.sqrt(dx*dx+dy*dy+dz*dz);
 
-          /* Clustered distances, inspired by the supplied reference. */
           const threshold=(i%8===0||j%8===0)?2.45:1.82;
 
           if(d<threshold && cursor+5<out.length){
@@ -926,7 +960,6 @@ if(!isMobile()){
       geometry.attributes.position.needsUpdate=true;
     }
 
-    /* -------------------- MOVING SIGNAL DOTS -------------------- */
     const signals=[];
 
     for(let i=0;i<8;i++){
@@ -987,7 +1020,6 @@ if(!isMobile()){
       });
     }
 
-    /* -------------------- PARALLAX -------------------- */
     let mx=0,my=0,tx=0,ty=0;
     let pageScroll=0;
 
@@ -1038,7 +1070,6 @@ if(!isMobile()){
 
       updateSignals(dt);
 
-      /* Very gentle camera travel creates 3D depth without distracting from content. */
       const wantedZ=10-Math.min(pageScroll*.00045,1.35);
 
       camera.position.x+=(tx*.22-camera.position.x)*.018;
