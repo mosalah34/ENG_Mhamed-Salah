@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mosalah34.github.io/ENG_Mhamed-Salah/sitemap.xml
